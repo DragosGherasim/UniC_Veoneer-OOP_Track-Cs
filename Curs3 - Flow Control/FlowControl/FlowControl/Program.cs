@@ -193,6 +193,7 @@ namespace FlowControl
                 if (amount < purchaseVal)
                 {
                     Console.WriteLine($"Your amount is lower then purchase value {purchaseVal} ! Enter a new amount .");
+                    continue;
                 }
 
                 int change = amount - purchaseVal;
