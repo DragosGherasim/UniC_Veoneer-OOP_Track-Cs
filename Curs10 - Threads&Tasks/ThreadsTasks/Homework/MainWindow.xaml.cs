@@ -21,18 +21,25 @@ namespace Homework
     /// </summary>
     public partial class MainWindow : Window
     {
+        static bool isInitialized;
         public MainWindow()
         {
+            isInitialized = true;
             InitializeComponent();
         }
 
         private void btnNormalExec_Click(object sender, RoutedEventArgs e)
         {
-            lblMessage.Content = "Start";
-            
-            Thread.Sleep(10000);
+            if (isInitialized)
+            {
+                lblMessage.Content = "Start";
 
-            lblMessage.Content = "Stop";
+                Thread.Sleep(10000);
+
+                lblMessage.Content = "Stop";
+
+                isInitialized = false;
+            }
         }
 
         private async void btnAsyncExec_Click(object sender, RoutedEventArgs e)
