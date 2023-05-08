@@ -24,27 +24,28 @@ namespace Homework
         static bool isInitialized;
         public MainWindow()
         {
-            isInitialized = true;
             InitializeComponent();
         }
 
         private void btnNormalExec_Click(object sender, RoutedEventArgs e)
         {
-            if (isInitialized)
-            {
                 lblMessage.Content = "Start";
 
                 Thread.Sleep(10000);
 
                 lblMessage.Content = "Stop";
-
-                isInitialized = false;
-            }
         }
 
         private async void btnAsyncExec_Click(object sender, RoutedEventArgs e)
         {
-            await btnAsyncRun();
+            if (!isInitialized)
+            {
+                isInitialized = true;
+
+                await btnAsyncRun();
+
+                isInitialized = false;
+            }
         }
 
         private async Task btnAsyncRun()
