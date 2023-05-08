@@ -42,7 +42,11 @@ namespace Homework
             {
                 isInitialized = true;
 
+                btnAsyncExec.IsEnabled = false;
+
                 await btnAsyncRun();
+
+                btnAsyncExec.IsEnabled = true;
 
                 isInitialized = false;
             }
